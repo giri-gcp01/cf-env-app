@@ -1,0 +1,16 @@
+---
+applications:
+  - name: env-app
+    memory: 1024M
+    instances: 3
+    buildpacks:
+      - paketo-buildpacks/java
+    routes:
+      - route: env-app-test.apps.cf.gcplearnng.tech 
+    path: ./target/env-app-1.0.jar
+    health-check-type: http
+    health-check-http-endpoint: /health
+    env:
+     APP_ENV_VARIABLE1: VALUE1
+     APP_ENV_VARIABLE2: VALUE2
+     APP_ENV_VARIABLE3: VALUE3
